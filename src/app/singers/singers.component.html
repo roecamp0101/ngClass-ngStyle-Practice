@@ -1,0 +1,56 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <ul class="list-unstyled">
+        <li *ngFor="let m of magazines">
+        <p>I love the <strong [ngClass]="{
+          'text-primary': m.name === 'people',
+          'text-danger': m.name === 'O',
+          'text-warning': m.name === 'natl enquirer',
+          'text-info': m.name === 'medical now'
+        }">{{m.name}}</strong>, the type of magazine it is <strong [ngStyle]="{fontSize : m.type === 'nature' ? '29px' : '9px', 'background-color': m.type === 'info' ? 'red' : 'green'}">{{m.type}}</strong> mag</p>
+        <p>the cost is just <strong [ngClass]="{'font-italic': m.cost > 10, 'text-danger': m.cost <= 10  }">{{m.cost}}</strong> and its popularity is <strong
+          [ngClass]="{'bg-dark': m.popularity > 0.78, 'bg-danger': m.popularity <= 0.78 }"
+          >{{m.popularity}}</strong>  out of 100</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<br><br>
+
+<ul class="list-unstyled">
+  <li *ngFor="let hold of holdinfo">
+    
+        <!--using the includes E6 method to check conditions -->
+    <p>This user name is <strong
+
+
+      [ngClass]="
+        {
+          'text-primary': hold.name.includes('a'),
+          'text-danger': !hold.name.includes('a')
+        }
+
+        "
+
+      >{{hold.name}}</strong> and their login name {{hold.username}}, their mail
+
+      <strong
+      [ngStyle]="{fontSize: hold.email.includes('biz') ? '50px' : '9px'}">{{hold.email}}</strong></p>
+    <p> Their Street address is <!--<strong>{{hold.address.street}}</strong>--> and their suite is <strong
+      [ngClass]="
+        {
+          'text-primary': hold.address.suite.includes(9),
+          'text-danger': !hold.address.suite.includes(9)
+        }
+
+        "
+      >{{hold.address.suite}}</strong>  </p>
+
+  </li>
+</ul>

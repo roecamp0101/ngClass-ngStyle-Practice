@@ -1,20 +1,130 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
+
+<!-- Looping over the cars array  -->
 <ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  <li *ngFor="let car of cars">
+
+The name of this car is
+<strong [ngStyle]="{'background-color' : car.name === 'lamborghini' ? car.color : !car.color }">{{car.name}} </strong>
+This cars Id is
+ <span
+ [ngClass]="{'bg-info': car.id > 8, 'bg-danger': !(car.id > 8)}">{{car.id}}</span>
+  and the color is
+    <span
+[ngStyle]="{backgroundColor: 'transparent', 'color' : car.color , fontSize: '50px', borderRadius: '8px'}">{{car.color}}</span>
   </li>
 </ul>
 
+<!--
+In order to use ngStyle you must format it like
+
+[ngStyle]= "{'Style Attribute': 'value'}"
+
+ie.
+
+<p [ngStyle]="{'background-color': 'blue', 'color': 'green', fontSize: '50px', lineHeight: '4px'}"> hello </p>
+
+
+if you are doing conditional styling then you use [ngStyle] like This
+
+
+<ul>
+<li *ngFor="let info of infoName"> <p [ngStyle]="{'font-size': info.name === 'Johnny' ? '25px' : '8px'}" > info.name </p></li>
+<ul>
+
+meaning add style attribute font-size 25px to the value of info.name equalivent to Johnny/ else or everything else add font-size: 8px.
+
+
+with [ngStyle] it is easy to add a teternary condition
+
+
+-->
+
+
+
+<!--
+In order to use ngClass you must format it like
+
+[ngClass]= "{'Class name': 'value'}"
+
+ie.
+
+<p [ngClass]="{'text-primary': true }"> hello </p>
+
+
+if you are doing conditional styling then you use [ngClass] like This
+
+
+<ul>
+<li *ngFor="let info of infoName"> <p [ngClass]=
+
+"{
+
+'text-primary': info.name === 'Johnny',
+'text-success' : info.name === 'Carl',
+'text-danger': info.name === 'Coolin',
+'text-dark': info.name === 'Crusin'
+
+}" > info.name </p></li>
+<ul>
+
+meaning add a certain class to info.name with a certain value.
+
+To compare and contrast  classes use a comma.
+
+
+<ul>
+<li *ngFor="let info of infoName"> <p [ngClass]=
+
+"{
+
+'text-primary': info.name === 'Johnny',
+'text-success' : !info.name
+
+}" > info.name </p></li>
+<ul>
+
+
+'badge-success':  hold.online,
+'badge-danger': !hold.online
+
+
+-->
+
+
+<ul>
+  <li *ngFor="let car of cars">
+    <p> This {{car.name}} color is <span
+
+    [ngClass]="{
+      'text-dark': car.color === 'black',
+      'text-danger': car.color === 'red',
+      'text-warning': car.color === 'yellow',
+      'text-primary': car.color === 'blue'
+    }"
+      >{{car.color}}</span></p>
+
+  </li>
+</ul>
+
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <!-- @Input() example -->
+      <app-userinfo [carsInfo]="cars"></app-userinfo>
+    </div>
+  </div>
+</div>
+
+
+
+<app-info></app-info>
+
+
+<app-singers></app-singers>
+
+
+
+<br> <br>
+
+<app-modules></app-modules>

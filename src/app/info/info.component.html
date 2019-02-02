@@ -1,0 +1,25 @@
+<ul>
+  <li *ngFor="let hold of holdinfo">
+    {{hold.name}} +
+
+    <span class="badge badge-pill"
+
+    [ngClass]="{
+      'badge-success':  hold.online,
+      'badge-danger': !hold.online
+
+
+    }"> {{hold.online}}</span>
+  </li>
+</ul>
+
+
+<ul class="list-unstyled px-5">
+  <li *ngFor="let ih of infos">
+  <span [ngStyle]="{backgroundColor: ih.name.includes('JavaScript') ? 'red' : 'blue',
+  'color': ih.name.includes('Arrays') ? 'green' : 'white'  }">{{ih.name}}</span>
+  </li>
+  <li *ngFor="let item of p">
+  <p>The total score is {{item.total}} and the HTML score is {{item.HTML}} and the Javascipt score is {{item.JavaScipt}}</p>
+  </li>
+</ul>

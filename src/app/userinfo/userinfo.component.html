@@ -1,0 +1,22 @@
+<!-- looping over the cars array of objects variable reference (carsInfo) -->
+
+<ul class="list-unstyled">
+  <li *ngFor="let c of carsInfo">
+    <!-- add font-size attribute. Plus add the background-color attribute of pink if the c.name is equalivent to 'porche' and all the rest is black  -->
+    <div>This <span [ngStyle]="{'font-size': '25px', 'background-color': c.name === 'porche' ? 'pink' : 'black' }">{{c.name}}</span> color is exquizatley <span
+      [ngClass]="
+      {
+        'text-danger': c.color === 'red',
+        'text-primary': c.color === 'blue',
+        'text-warning': c.color === 'yellow',
+        'text-dark': c.color === 'black'
+
+       }
+      "
+    >{{c.color}}</span>
+
+<!-- add Class bg-dark to c.model who's number is 99302-->
+<span [ngClass]="{'bg-dark': c.model === 99302}">{{c.model}}</span>
+  </div>
+  </li>
+</ul>

@@ -1,0 +1,42 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end mb-3">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary all" (click)="onItemClick($event)">All</button>
+        <button type="button" class="btn btn-secondary" (click)="onItemClick($event)">DH</button>
+        <button type="button" class="btn btn-secondary" (click)="onItemClick($event)">MH</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 mx-auto" *ngFor="let h of holduserData">
+
+      <div class="card mb-4" *ngIf="h.org !== show">
+
+        <div class="card-header">
+          <div class="user-image d-inline-block mr-3">
+            <img src="{{h.avatar}}" alt="" class="rounded-circle align-middle">
+          </div>
+          <div class="user-info d-inline-block align-middle">
+            <p class="mb-0"><strong>{{h.nameFirst}} {{h.nameLast}}</strong></p>
+             <p class="mb-0"><strong>{{h.address}}</strong></p>
+             <p><strong>{{h.city}}, {{h.state}}, {{h.zip}}</strong></p>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <span class="badge badge-pill"
+          [ngClass]="{
+            'badge-info': h.online === 'onsite',
+            'badge-warning': h.online === 'remote'
+          }">{{h.online}}</span>
+
+          <span class="bg-secondary text-white rounded px-1">{{h.org}}</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
